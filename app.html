@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carteira Digital - Fidelidade</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .card-stack {
+            perspective: 1000px;
+            height: 250px;
+            position: relative;
+            margin: 40px auto;
+            width: 90%;
+            max-width: 380px;
+        }
+        
+        .loyalty-card {
+            position: absolute;
+            width: 100%;
+            height: 200px;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            transform-origin: bottom center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+        
+        .card-0 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            z-index: 4;
+            top: 0;
+            transform: rotate(0deg) scale(1);
+        }
+        
+        .card-1 {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            z-index: 3;
+            top: 10px;
+            transform: rotate(2deg) scale(0.95);
+            opacity: 0.9;
+        }
+        
+        .card-2 {
+            background: linear-gradient(135deg, #5ee7df 0%, #b490ca 100%);
+            z-index: 2;
+            top: 20px;
+            transform: rotate(4deg) scale(0.9);
+            opacity: 0.8;
+        }
+        
+        .card-3 {
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+            z-index: 1;
+            top: 30px;
+            transform: rotate(6deg) scale(0.85);
+            opacity: 0.7;
+        }
+        
+        .card-stack:hover .card-0 {
+            transform: rotate(0deg) translateY(-40px) scale(1.05);
+        }
+        
+        .card-stack:hover .card-1 {
+            transform: rotate(2deg) translateY(-30px) scale(1);
+        }
+        
+        .card-stack:hover .card-2 {
+            transform: rotate(4deg) translateY(-20px) scale(0.95);
+        }
+        
+        .card-stack:hover .card-3 {
+            transform: rotate(6deg) translateY(-10px) scale(0.9);
+        }
+        
+        .stamp-progress {
+            height: 12px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .stamp-progress-fill {
+            height: 100%;
+            border-radius: 6px;
+            background: white;
+            transition: width 0.5s ease;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <header class="flex items-center justify-between mb-8">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-800">Minha Carteira</h1>
+                <p class="text-gray-500">Cartões de fidelidade</p>
+            </div>
+            <div class="bg-white p-3 rounded-full shadow">
+                <i class="fas fa-wallet text-2xl text-purple-600"></i>
+            </div>
+        </header>
+        
+        <div class="card-stack">
+            <!-- Starbucks -->
+            <div class="loyalty-card card-0">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow">
+                            <i class="fas fa-coffee text-2xl text-green-600"></i>
+                        </div>
+                        <h3 class="text-white font-bold text-xl mt-2">Starbucks</h3>
+                    </div>
+                    <div class="text-white text-sm">
+                        <span class="font-bold">Válido até:</span><br>
+                        12/2024
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <div class="text-white flex justify-between text-sm mb-1">
+                        <span>9/12 carimbos</span>
+                        <span>Próximo café grátis!</span>
+                    </div>
+                    <div class="stamp-progress">
+                        <div class="stamp-progress-fill" style="width: 75%"></div>
+                    </div>
+                </div>
+                
+                <div class="absolute bottom-2 right-2 bg-white bg-opacity-20 text-white rounded-full px-2 py-1 text-xs">
+                    #2458 7264
+                </div>
+            </div>
+            
+            <!-- Amazon -->
+            <div class="loyalty-card card-1">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow">
+                            <i class="fab fa-amazon text-2xl text-yellow-500"></i>
+                        </div>
+                        <h3 class="text-white font-bold text-xl mt-2">Amazon</h3>
+                    </div>
+                    <div class="text-white text-sm">
+                        <span class="font-bold">Válido até:</span><br>
+                        05/2025
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <div class="text-white flex justify-between text-sm mb-1">
+                        <span>5/10 compras</span>
+                        <span>Frete grátis!</span>
+                    </div>
+                    <div class="stamp-progress">
+                        <div class="stamp-progress-fill" style="width: 50%"></div>
+                    </div>
+                </div>
+                
+                <div class="absolute bottom-2 right-2 bg-white bg-opacity-20 text-white rounded-full px-2 py-1 text-xs">
+                    #8372 9541
+                </div>
+            </div>
+            
+            <!-- Local Market -->
+            <div class="loyalty-card card-2">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow">
+                            <i class="fas fa-shopping-cart text-2xl text-blue-600"></i>
+                        </div>
+                        <h3 class="text-white font-bold text-xl mt-2">Mercado Local</h3>
+                    </div>
+                    <div class="text-white text-sm">
+                        <span class="font-bold">Válido até:</span><br>
+                        08/2024
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <div class="text-white flex justify-between text-sm mb-1">
+                        <span>3/8 visitas</span>
+                        <span>10% de desconto!</span>
+                    </div>
+                    <div class="stamp-progress">
+                        <div class="stamp-progress-fill" style="width: 37.5%"></div>
+                    </div>
+                </div>
+                
+                <div class="absolute bottom-2 right-2 bg-white bg-opacity-20 text-white rounded-full px-2 py-1 text-xs">
+                    #6158 3092
+                </div>
+            </div>
+            
+            <!-- Cinema -->
+            <div class="loyalty-card card-3">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow">
+                            <i class="fas fa-film text-2xl text-red-500"></i>
+                        </div>
+                        <h3 class="text-white font-bold text-xl mt-2">CineStar</h3>
+                    </div>
+                    <div class="text-white text-sm">
+                        <span class="font-bold">Válido até:</span><br>
+                        11/2024
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <div class="text-white flex justify-between text-sm mb-1">
+                        <span>2/5 filmes</span>
+                        <span>Ingresso grátis!</span>
+                    </div>
+                    <div class="stamp-progress">
+                        <div class="stamp-progress-fill" style="width: 40%"></div>
+                    </div>
+                </div>
+                
+                <div class="absolute bottom-2 right-2 bg-white bg-opacity-20 text-white rounded-full px-2 py-1 text-xs">
+                    #4802 1765
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-2xl shadow-lg p-6 mt-12 max-w-md mx-auto">
+            <h2 class="text-xl font-bold text-gray-800 mb-4">Adicionar novo cartão</h2>
+            
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-gray-700 mb-2">Nome da empresa</label>
+                    <input type="text" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-purple-600 outline-none">
+                </div>
+                
+                <div>
+                    <label class="block text-gray-700 mb-2">Número do cartão</label>
+                    <input type="text" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-purple-600 outline-none">
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-gray-700 mb-2">Carimbos necessários</label>
+                        <input type="number" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-purple-600 outline-none">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-700 mb-2">Validade</label>
+                        <input type="month" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-purple-600 outline-none">
+                    </div>
+                </div>
+                
+                <button class="w-full bg-purple-600 text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition duration-300 mt-4">
+                    Adicionar Cartão
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Simular clique para adicionar novo cartão
+            const addButton = document.querySelector('button[type="submit"]');
+            if(addButton) {
+                addButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('Cartão adicionado com sucesso!');
+                });
+            }
+            
+            // Rotação dos cartões ao passar o mouse
+            const cardStack = document.querySelector('.card-stack');
+            const cards = document.querySelectorAll('.loyalty-card');
+            
+            cardStack.addEventListener('mouseenter', function() {
+                cards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.style.transition = 'transform 0.5s ease';
+                        card.style.transform = `rotate(${index * 2}deg) translateY(-${index * 10}px)`;
+                    }, index * 100);
+                });
+            });
+            
+            cardStack.addEventListener('mouseleave', function() {
+                cards.forEach((card, index) => {
+                    card.style.transition = 'transform 0.3s ease';
+                    card.style.transform = `rotate(${index * 2}deg) translateY(${index * 10}px)`;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
